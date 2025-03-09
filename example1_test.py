@@ -3,18 +3,27 @@ import plotly.express as px
 import pandas as pd
 
 
+
 # Title of the app
 st.title("Streamlit Dashboard with Plotly")
 
-# Sample data
-data = {
-    "Category": ["A", "B", "C", "D"],
-    "Values": [10, 20, 15, 25]
-}
-df = pd.DataFrame(data)
+uni=pd.read_csv('university_student_dashboard_data.csv')
 
-# Create a bar chart
-fig = px.bar(df, x="Category", y="Values", title="Sample Bar Chart")
+#convert year and term into one column
+uni['Year'] = pd.to_datetime(uni['Year'], format='%Y')
+uni['Year_Term'] = uni['Year'].dt.strftime('%Y') + ' ' + uni['Term']
+
+
+#Plot admissions raw data
+fig=px.line(uni, x='Year_Term', y=uni.columns[2:5],markers=True,color_discrete_sequence=["red", "blue", "green"])
+fig.update_layout(
+    title='Admissions Over Time',
+    xaxis_title='Year and Term',
+    yaxis_title='Count',
+    yaxis_range=[0, max(uni['Applications'])+500],
+    legend={'title_text':''}
+)
+fig.update_xaxes(tickangle=45)
 
 # Display the Plotly chart in Streamlit
 st.plotly_chart(fig)
