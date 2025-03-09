@@ -7,7 +7,8 @@ import pandas as pd
 # Title of the app
 st.title("Streamlit Dashboard with Plotly")
 
-uni=pd.read_csv('university_student_dashboard_data.csv')
+url='https://github.com/abtuchman/University_Dashboard_P2/blob/main/university_student_dashboard_data.csv'
+uni=pd.read_csv(url)
 
 #convert year and term into one column
 uni['Year'] = pd.to_datetime(uni['Year'], format='%Y')
