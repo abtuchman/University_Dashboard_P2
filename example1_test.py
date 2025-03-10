@@ -120,5 +120,5 @@ with tab2:
 with tab3:
     st.plotly_chart(fig3, use_container_width=True)
 
-with tab3:
+with tab4:
     st.plotly_chart(fig4, use_container_width=True)
