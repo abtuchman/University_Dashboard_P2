@@ -5,7 +5,7 @@ import pandas as pd
 
 
 # Title of the app
-st.title("Streamlit Dashboard with Plotly")
+st.title("University Dashboard (Problem 2)")
 
 #Load Data
 url="https://github.com/abtuchman/University_Dashboard_P2/blob/c9eb52f7d7d49ac300374da7cae0c75124f39d33/university_student_dashboard_data.csv?raw=true"
@@ -113,12 +113,16 @@ tab1, tab2, tab3, tab4 = st.tabs(["Admission", "Retention", "Student Satisfactio
 
 with tab1:
     st.plotly_chart(fig1, use_container_width=True)
+    st.caption("Since 2015, Applications and Admitted students have increased 40%, while Enrollment has increased 33.3%")
 
 with tab2:
     st.plotly_chart(fig2, use_container_width=True)
+    st.caption("Student retention has increased by 5.8% since 2015")
 
 with tab3:
     st.plotly_chart(fig3, use_container_width=True)
+    st.caption("Student satisfaction has increased from 78% in 2015 to 88% in 2024")
 
 with tab4:
     st.plotly_chart(fig4, use_container_width=True)
+    st.caption("As of 2025, Engineering is the most popular department with 37.5% of students enrolled. Business is the 2nd most popular with 28.1%. Arts is the 3rd with 21.9. Finally, Arts is the 4th most popular with 18.5%")
